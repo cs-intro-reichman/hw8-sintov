@@ -61,6 +61,9 @@ public class Network {
         if (this.getUser(name1) == null || this.getUser(name2) == null){
             return false;
         }
+        if (name1 == name2){
+            return false;
+        }
         return this.getUser(name1).addFollowee(name2);
     }
     
@@ -74,7 +77,7 @@ public class Network {
             if(this.users[i].getName() == name){
                 continue;
             }
-            if(requestedUser.countMutual(this.users[i]) >= maxMutual){
+            if(requestedUser.countMutual(this.users[i]) > maxMutual){
                 maxMutual = requestedUser.countMutual(this.users[i]);
                 recommended = this.users[i].getName();
             }
@@ -85,10 +88,10 @@ public class Network {
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
-        String mostPopular = "";
+        String mostPopular = null;
         int countPop = 0;
         for(int i=0; i<this.userCount; i++){
-            if(this.followeeCount(this.users[i].getName()) >= countPop){
+            if(this.followeeCount(this.users[i].getName()) > countPop){
                 countPop = this.followeeCount(this.users[i].getName());
                 mostPopular = this.users[i].getName();
             }
@@ -115,7 +118,7 @@ public class Network {
     public String toString() {
         String description = "";
        for(int i=0; i<this.userCount; i++){
-        description += this.users[i].toString();
+        description = description + this.users[i].toString() + "\n";
        }
        return description;
     }
