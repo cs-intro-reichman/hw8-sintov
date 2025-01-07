@@ -61,7 +61,9 @@ public class Network {
         if (this.getUser(name1) == null || this.getUser(name2) == null){
             return false;
         }
-        if (name1 == null || name2 == null)
+        if (name1 == null || name2 == null){
+            return false;
+        }
         if (name1 == name2){
             return false;
         }
@@ -117,9 +119,15 @@ public class Network {
 
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
-        String description = "Network" + "\n";
+        String description = "Network:" + "\n";
        for(int i=0; i<this.userCount; i++){
-        description = description + this.users[i].toString() + "\n";
+        if(i != this.userCount-1){
+            description = description + this.users[i].toString() + "\n";
+        }
+        else{
+            description = description + this.users[i].toString();
+        }
+        
        }
        return description;
     }
