@@ -56,10 +56,10 @@
         if (this.fCount == maxfCount){
             return false;
         }
-        if (follows(name)){
+        if (this.follows(name)){
             return false;
         }
-        this.follows[fCount]= name;
+        this.follows[fCount] = name;
         fCount ++;
         return true;
     }
