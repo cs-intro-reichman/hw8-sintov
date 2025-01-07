@@ -77,7 +77,7 @@
         for (int j = i; j<this.fCount-1;j++){
             this.follows[j] = this.follows[j+1];
         }
-        this.follows[fCount] = null;
+        this.follows[fCount-1] = null;
         fCount --;
         return true;
     }
