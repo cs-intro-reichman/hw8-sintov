@@ -59,8 +59,8 @@
         if (this.follows(name)){
             return false;
         }
-        this.follows[fCount] = name;
-        fCount ++;
+        this.follows[this.fCount] = name;
+        this.fCount ++;
         return true;
     }
 
@@ -77,8 +77,8 @@
         for (int j = i; j<this.fCount-1;j++){
             this.follows[j] = this.follows[j+1];
         }
-        this.follows[fCount-1] = null;
-        fCount --;
+        this.follows[this.fCount-1] = null;
+        this.fCount --;
         return true;
     }
 
